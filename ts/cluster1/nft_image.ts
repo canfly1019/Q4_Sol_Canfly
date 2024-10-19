@@ -25,6 +25,7 @@ umi.use(signerIdentity(signer));
             contentType: 'image/png'
         })
         
+        // On devnet, replace "arweave.net" with "devnet.irys.xyz" for proper resource handling
         const uri = await umi.uploader.upload([myUri]);
         console.log("Your image URI: ", uri);
         
