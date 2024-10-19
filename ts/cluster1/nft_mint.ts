@@ -16,11 +16,19 @@ umi.use(mplTokenMetadata())
 const mint = generateSigner(umi);
 
 (async () => {
-    // let tx = ???
-    // let result = await tx.sendAndConfirm(umi);
-    // const signature = base58.encode(result.signature);
+    let tx = createNft(umi, {
+        mint: mint,
+        name: "FLY_RUG",
+        symbol: "FLYRUG",
+        uri: "https://devnet.irys.xyz/8eBFciJ2FCkAxhezRetKer7EXJUxXtdyG11rm6Ujq13h",
+        sellerFeeBasisPoints: percentAmount(1),
+
+    })
+    let result = await tx.sendAndConfirm(umi);
+    const signature = base58.encode(result.signature);
     
-    // console.log(`Succesfully Minted! Check out your TX here:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
+    console.log(`Succesfully Minted! Check out your TX here:\nhttps://explorer.solana.com/tx/${signature}?cluster=devnet`)
+    // https://explorer.solana.com/address/9qhGjCfFzEnX5oucJQBBZbB3Y8KMUCpmdaj4ZRt6h5CT/attributes?cluster=devnet
 
     console.log("Mint Address: ", mint.publicKey);
 })();
